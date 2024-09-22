@@ -1,6 +1,9 @@
 // Inicializar el array de transacciones
 let transactions = JSON.parse(localStorage.getItem('transactions')) || [];
 
+// Índice de la transacción que se está editando
+let editIndex = -1;
+
 // Elementos del DOM
 const transactionForm = document.getElementById('transactionForm');
 const transactionsTable = document.getElementById('transactionsTable').getElementsByTagName('tbody')[0];
@@ -22,7 +25,7 @@ let balanceChart = new Chart(balanceChartCtx, {
     }
 });
 
-// Función para agregar una transacción
+// Función para agregar o actualizar una transacción
 transactionForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -31,9 +34,18 @@ transactionForm.addEventListener('submit', (e) => {
     const description = document.getElementById('description').value;
     const amount = parseFloat(document.getElementById('amount').value);
 
-    // Crear una nueva transacción
-    const transaction = { type, description, amount };
-    transactions.push(transaction);
+    if (editIndex >= 0) {
+        // Actualizar la transacción existente
+        transactions[editIndex] = { type, description, amount };
+        editIndex = -1; // Reiniciar el índice de edición
+        document.querySelector('.button').textContent = 'Agregar Transacción'; // Cambiar el texto del botón
+    } else {
+        // Agregar una nueva transacción
+        const transaction = { type, description, amount };
+        transactions.push(transaction);
+    }
+
+    // Guardar en LocalStorage
     localStorage.setItem('transactions', JSON.stringify(transactions));
 
     // Actualizar la tabla y el gráfico
@@ -54,9 +66,28 @@ function renderTransactions() {
             <td>${transaction.type}</td>
             <td>${transaction.description}</td>
             <td>${transaction.amount}</td>
-            <td><button class="button button-danger" onclick="deleteTransaction(${index})">Eliminar</button></td>
+            <td>
+                <button class="button button-edit" onclick="editTransaction(${index})">Editar</button>
+                <button class="button button-danger" onclick="deleteTransaction(${index})">Eliminar</button>
+            </td>
         `;
     });
+}
+
+// Función para editar una transacción
+function editTransaction(index) {
+    const transaction = transactions[index];
+
+    // Cargar los valores en el formulario
+    document.getElementById('type').value = transaction.type;
+    document.getElementById('description').value = transaction.description;
+    document.getElementById('amount').value = transaction.amount;
+
+    // Guardar el índice de la transacción que se está editando
+    editIndex = index;
+
+    // Cambiar el texto del botón de agregar a "Guardar cambios"
+    document.querySelector('.button').textContent = 'Guardar cambios';
 }
 
 // Función para eliminar una transacción

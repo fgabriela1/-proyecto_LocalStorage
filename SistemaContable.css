@@ -1,4 +1,48 @@
+
 /* Reset básico */
+/* Añade un espaciado adicional al final del contenedor para asegurar visibilidad */
+.container {
+    padding-bottom: 50px; /* Para dar espacio debajo */
+    margin-bottom: 50px; /* Separar el formulario de los gráficos */
+}
+
+/* Asegura que los gráficos no crezcan demasiado */
+.chart-container {
+    max-height: 400px; /* Limitar la altura máxima del gráfico */
+    overflow-y: auto; /* Habilitar desplazamiento si el gráfico crece demasiado */
+}
+
+/* Botones estilizados */
+button.edit-btn {
+    background-color: orange;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button.delete-btn {
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Para asegurar que el formulario se mantenga siempre visible */
+.form-section {
+    position: relative;
+    z-index: 10;
+}
+
+/* Estilo general para ajustar la página al tamaño de la ventana */
+body {
+    overflow-y: auto; /* Permitir scroll vertical en la página */
+    height: 100vh; /* Ajusta el tamaño de la página */
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -66,6 +110,22 @@ body {
 
 .button:hover {
     background-color: #2ecc71;
+}
+
+.button-edit {
+    background-color: #f39c12;
+}
+
+.button-edit:hover {
+    background-color: #e67e22;
+}
+
+.button-danger {
+    background-color: #e74c3c;
+}
+
+.button-danger:hover {
+    background-color: #c0392b;
 }
 
 table {
