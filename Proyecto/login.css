@@ -1,0 +1,104 @@
+/* General body styling */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f3f4f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+}
+
+/* Container for the login/register box */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* Main box */
+.login-box {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Input container for fields */
+.input-container {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-container label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.input-container input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+/* Button styling */
+.btn {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+
+/* Error message styling */
+#error-message, #register-error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+/* Switch between forms */
+#switchForm {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+#switchForm a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+#switchForm a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive design for small screens */
+@media (max-width: 480px) {
+    .login-box {
+        width: 100%;
+        padding: 20px;
+    }
+}

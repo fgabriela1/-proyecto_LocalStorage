@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Iniciar Sesión / Registrarse</title>
+        <link rel="stylesheet" href="login.css">
+    </head>
+    <body>
+        <div class="login-container">
+            <!-- Caja para cambiar entre Inicio de sesión y Registro -->
+            <div class="login-box">
+                <h2 id="formTitle">Iniciar Sesión</h2>
+    
+                <!-- Formulario de inicio de sesión -->
+                <form id="loginForm">
+                    <div class="input-container">
+                        <label for="username">Usuario:</label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+                    <div class="input-container">
+                        <label for="password">Contraseña:</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <button type="submit" class="btn">Entrar</button>
+                    <div id="error-message"></div>
+                </form>
+    
+                <!-- Formulario de registro (oculto inicialmente) -->
+                <form id="registerForm" style="display: none;">
+                    <div class="input-container">
+                        <label for="newUsername">Nuevo Usuario:</label>
+                        <input type="text" id="newUsername" name="newUsername" required>
+                    </div>
+                    <div class="input-container">
+                        <label for="newPassword">Nueva Contraseña:</label>
+                        <input type="password" id="newPassword" name="newPassword" required>
+                    </div>
+                    <button type="submit" class="btn">Registrarse</button>
+                    <div id="register-error-message"></div>
+                </form>
+    
+                <!-- Botón para cambiar entre los formularios -->
+                <p id="switchForm">¿No tienes una cuenta? <a href="#" id="registerLink">Regístrate aquí</a></p>
+            </div>
+        </div>
+    
+        <script src="login.js"></script>
+    </body>
+    </html>
+    
