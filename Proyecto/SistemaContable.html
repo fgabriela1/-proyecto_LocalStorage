@@ -15,7 +15,6 @@
         <div class="card">
             <h2>Registrar Transacción</h2>
             <form id="transactionForm">
-                
                 <label for="type">Tipo:</label>
                 <select id="type" class="input">
                     <option value="Ingreso">Ingreso</option>
@@ -46,13 +45,18 @@
                 </tbody>
             </table>
         </div>
-
-        <!-- Gráficos Financieros -->
-        <div class="chart-container">
-            <canvas id="balanceChart"></canvas>
-        </div>
+    </table>
+    <!-- Botones de exportación -->
+    <div class="buttons">
+        <button id="pdfExport">Exportar a PDF</button>
     </div>
 
+    <!-- Gráficos Financieros -->
+    <div class="chart-container">
+        <canvas id="balanceChart"></canvas>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
     <script src="SistemaContable.js"></script>
 </body>
 </html>

@@ -1,67 +1,46 @@
-// Cambiar entre formularios de inicio de sesión y registro
-document.getElementById("registerLink").addEventListener("click", function(event) {
-    event.preventDefault();
-    document.getElementById("loginForm").style.display = "none";
-    document.getElementById("registerForm").style.display = "block";
-    document.getElementById("formTitle").textContent = "Registrarse";
-    document.getElementById("switchForm").innerHTML = '¿Ya tienes una cuenta? <a href="#" id="loginLink">Inicia sesión aquí</a>';
+// Lista de usuarios registrados (inicialmente vacía)
+let usuariosRegistrados = [];
 
-    // Cambiar de nuevo al formulario de inicio de sesión
-    document.getElementById("loginLink").addEventListener("click", function(event) {
-        event.preventDefault();
-        document.getElementById("registerForm").style.display = "none";
-        document.getElementById("loginForm").style.display = "block";
-        document.getElementById("formTitle").textContent = "Iniciar Sesión";
-        document.getElementById("switchForm").innerHTML = '¿No tienes una cuenta? <a href="#" id="registerLink">Regístrate aquí</a>';
-    });
+// Función para verificar si el usuario ya existe
+function verificarUsuario(nombre) {
+  return usuariosRegistrados.find(usuario => usuario.nombre === nombre);
+}
+
+// Función para iniciar sesión
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  // Capturar datos del formulario de login
+  const nombre = document.getElementById('loginName').value;
+  const password = document.getElementById('loginPassword').value;
+
+  // Buscar si el usuario está registrado
+  const usuario = verificarUsuario(nombre);
+
+  if (usuario && usuario.password === password) {
+    // Si el usuario y la contraseña son correctos, redirigir al sistema contable
+    window.location.href = "SistemaContable.html";
+  } else {
+    alert("Nombre de usuario o contraseña incorrectos");
+  }
 });
 
-// Manejar el inicio de sesión
-document.getElementById("loginForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-    
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
-    const errorMessage = document.getElementById("error-message");
+// Función para registrar un nuevo usuario
+document.getElementById('registerForm').addEventListener('submit', function(event) {
+  event.preventDefault();
 
-    // Obtener usuarios del localStorage
-    const users = JSON.parse(localStorage.getItem("users")) || {};
+  // Capturar datos del formulario de registro
+  const nombre = document.getElementById('registerName').value;
+  const password = document.getElementById('registerPassword').value;
 
-    // Verificar si el usuario y la contraseña son correctos
-    if (users[username] && users[username] === password) {
-        localStorage.setItem("isLoggedIn", "true");
-        localStorage.setItem("username", username);
-        window.location.href = "SistemaContable.html"; // Redirigir al sistema contable
-    } else {
-        errorMessage.textContent = "Usuario o contraseña incorrectos.";
-    }
+  // Verificar si el usuario ya está registrado
+  if (verificarUsuario(nombre)) {
+    alert("El nombre de usuario ya está registrado. Elige otro.");
+  } else {
+    // Agregar el nuevo usuario a la lista de usuarios registrados
+    usuariosRegistrados.push({ nombre: nombre, password: password });
+    alert(`Usuario ${nombre} registrado exitosamente`);
+  }
 });
 
-// Manejar el registro de usuarios
-document.getElementById("registerForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-    
-    const newUsername = document.getElementById("newUsername").value;
-    const newPassword = document.getElementById("newPassword").value;
-    const registerErrorMessage = document.getElementById("register-error-message");
-
-    // Obtener los usuarios existentes
-    let users = JSON.parse(localStorage.getItem("users")) || {};
-
-    // Verificar si el usuario ya existe
-    if (users[newUsername]) {
-        registerErrorMessage.textContent = "El nombre de usuario ya existe.";
-    } else {
-        // Registrar nuevo usuario
-        users[newUsername] = newPassword;
-        localStorage.setItem("users", JSON.stringify(users));
-
-        // Redirigir al inicio de sesión
-        alert("Usuario registrado con éxito. Ahora puedes iniciar sesión.");
-        document.getElementById("registerForm").reset();
-        document.getElementById("registerForm").style.display = "none";
-        document.getElementById("loginForm").style.display = "block";
-        document.getElementById("formTitle").textContent = "Iniciar Sesión";
-        document.getElementById("switchForm").innerHTML = '¿No tienes una cuenta? <a href="#" id="registerLink">Regístrate aquí</a>';
-    }
-});
+  

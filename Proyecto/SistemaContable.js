@@ -115,7 +115,34 @@ function updateBalanceChart() {
     balanceChart.update();
 }
 
+// Función para exportar las transacciones a PDF
+document.getElementById("pdfExport").addEventListener("click", function() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
 
+    // Título del documento
+    doc.text("Historial de Transacciones", 20, 10);
+
+    let transactions = [];
+    const tableRows = document.getElementById("transactionsTable").querySelectorAll("tbody tr");
+
+    // Recorrer cada fila de la tabla y obtener los datos
+    tableRows.forEach((row, index) => {
+        const type = row.cells[0].innerText;
+        const description = row.cells[1].innerText;
+        const amount = row.cells[2].innerText;
+        transactions.push([type, description, amount]);
+    });
+
+    // Agregar los datos al PDF en forma de tabla
+    transactions.forEach((transaction, index) => {
+        const yPosition = 20 + (index * 10);
+        doc.text(`${transaction[0]} - ${transaction[1]} - ${transaction[2]}`, 20, yPosition);
+    });
+
+    // Descargar el PDF
+    doc.save("transacciones.pdf");
+});
 
 // Inicializar la aplicación mostrando las transacciones guardadas
 renderTransactions();

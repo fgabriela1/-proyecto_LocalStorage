@@ -1,46 +1,4 @@
-
-.container {
-    padding-bottom: 50px; /* Para dar espacio debajo */
-    margin-bottom: 50px; /* Separar el formulario de los gráficos */
-}
-
-/* Asegura que los gráficos no crezcan demasiado */
-.chart-container {
-    max-height: 400px; /* Limitar la altura máxima del gráfico */
-    overflow-y: auto; /* Habilitar desplazamiento si el gráfico crece demasiado */
-}
-
-/* Botones estilizados */
-button.edit-btn {
-    background-color: orange;
-    color: white;
-    padding: 5px 10px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-button.delete-btn {
-    background-color: red;
-    color: white;
-    padding: 5px 10px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-/* Para asegurar que el formulario se mantenga siempre visible */
-.form-section {
-    position: relative;
-    z-index: auto;
-}
-
-/* Estilo general para ajustar la página al tamaño de la ventana */
-body {
-    overflow-y: auto; /* Permitir scroll vertical en la página */
-    height: auto; /* Ajusta el tamaño de la página */
-}
-
+/* General  */
 * {
     margin: 0;
     padding: 0;
@@ -49,31 +7,36 @@ body {
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #eefaeb;
     color: #333;
     display: flex;
     justify-content: center;
     align-items: center;
     height: auto;
+    overflow-y: auto;
 }
 
+/* Container */
 .container {
     width: 90%;
     max-width: 1200px;
     padding: 20px;
-    background-color: #fff;
+    background-color: #5ca0fa;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    margin-bottom: 50px;
 }
 
+/* titulo */
 .title {
     text-align: center;
     margin-bottom: 20px;
-    color: #2c3e50;
+    color: #041f3a;
 }
 
+/* Parte de las tablas */
 .card {
-    background-color: #ecf0f1;
+    background-color: #84f7a1;
     padding: 20px;
     border-radius: 8px;
     margin-bottom: 20px;
@@ -85,20 +48,22 @@ body {
     color: #2980b9;
 }
 
+/* Input fields */
 .input {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
-    border: 1px solid #bdc3c7;
+    border: 1px solid #b5d3eb;
     border-radius: 5px;
     font-size: 16px;
 }
 
+/* Botones */
 .button {
     width: 100%;
     padding: 10px;
     background-color: #27ae60;
-    color: #fff;
+    color: white;
     border: none;
     border-radius: 5px;
     font-size: 16px;
@@ -107,7 +72,7 @@ body {
 }
 
 .button:hover {
-    background-color: #2ecc71;
+    background-color: #2ecc50;
 }
 
 .button-edit {
@@ -126,6 +91,30 @@ body {
     background-color: #c0392b;
 }
 
+/* Boton de exportar PDF */
+.buttons {
+    display: space-between;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+#pdfExport, #excelExport {
+    width: 48%;
+    padding: 10px;
+    background-color: #219752;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#pdfExport:hover {
+    background-color: #29b941;
+}
+
+
+/* Table styling */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -139,18 +128,19 @@ th, td {
 
 th {
     background-color: #34495e;
-    color: #fff;
+    color: white;
 }
 
+/* Chart container */
 .chart-container {
     width: 100%;
     margin-top: 30px;
+    max-height: 400px;
+    overflow-y: auto;
 }
 
 @media (min-width: 768px) {
     .container {
         padding: 40px;
     }
-
-   
 }
