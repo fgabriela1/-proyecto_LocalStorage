@@ -6,8 +6,8 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #eefaeb;
+    font-family: Georgia, Times, 'Times New Roman', serif, sans-serif;
+    background-color: #e4e6f0;
     color: #333;
     display: flex;
     justify-content: center;
@@ -21,26 +21,37 @@ body {
     width: 90%;
     max-width: 1200px;
     padding: 20px;
-    background-color: #5ca0fa;
+    background-color: #f9f8fa;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     margin-bottom: 50px;
 }
 
-/* titulo */
+/* Titulo */
 .title {
     text-align: center;
     margin-bottom: 20px;
     color: #041f3a;
 }
 
+/* Contenedor para transacciones y gráfico */
+.content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    flex-wrap: wrap; /* Para que se adapte en pantallas pequeñas */
+}
+
 /* Parte de las tablas */
 .card {
-    background-color: #84f7a1;
+    background-color: #faf3ee;
     padding: 20px;
     border-radius: 8px;
     margin-bottom: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    min-width: 300px; /* Para que las tarjetas no sean demasiado pequeñas */
 }
 
 .card h2 {
@@ -53,7 +64,7 @@ body {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
-    border: 1px solid #b5d3eb;
+    border: 1px solid #e9f1f8;
     border-radius: 5px;
     font-size: 16px;
 }
@@ -93,7 +104,7 @@ body {
 
 /* Boton de exportar PDF */
 .buttons {
-    display: space-between;
+    display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
 }
@@ -112,7 +123,6 @@ body {
 #pdfExport:hover {
     background-color: #29b941;
 }
-
 
 /* Table styling */
 table {
@@ -133,12 +143,16 @@ th {
 
 /* Chart container */
 .chart-container {
-    width: 100%;
-    margin-top: 30px;
-    max-height: 400px;
-    overflow-y: auto;
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+/* Responsive */
 @media (min-width: 768px) {
     .container {
         padding: 40px;
