@@ -147,3 +147,26 @@ document.getElementById("pdfExport").addEventListener("click", function() {
 // Inicializar la aplicación mostrando las transacciones guardadas
 renderTransactions();
 updateBalanceChart();
+
+
+// Función para cerrar sesión
+document.getElementById("logoutBtn").addEventListener("click", function() {
+    // Aquí puedes añadir la lógica para cerrar sesión
+    alert("Cerrando sesión...");
+    // Redirigir a la página de inicio de sesión o limpiar datos de sesión
+    window.location.href = 'login.html'; // Asegúrate de tener la página de login
+});
+
+// Funcionalidad de modo oscuro
+const darkModeBtn = document.getElementById('darkModeBtn');
+darkModeBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    
+    // Cambiar el texto del botón dependiendo del modo actual
+    if (document.body.classList.contains('dark-mode')) {
+        darkModeBtn.textContent = 'Modo Claro';
+    } else {
+        darkModeBtn.textContent = 'Modo Oscuro';
+    }
+});
+
